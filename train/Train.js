@@ -1,16 +1,20 @@
 var Train = new function(data) {
    this.number = data.number;
    this.cost = data.cost;
-   this.start = data.start;
-   this.finish = data.finish;
+   this.startPoint = data.startPoint;
+   this.finishPoint = data.finishPoint;
+   this.startTime = data.startTime;
+   this.finishTime = data.finishPoint;
 }
 
 Train.prototype.getData = function() {
    return {
       number: this.number,
       cost: this.cost,
-      start: this.start,
-      finish: this.finish
+      startPoint: this.startPoint,
+      finishPoint: this.finishPoint.
+      startTime: this.startTime,
+      finishTime : this.finishTime
    }
 }
 
