@@ -37,6 +37,10 @@ var Trains = class {
             result.push(this.trains[i]);
       return result;
    }
+
+   makeRoute(startPoint, finishPoint) {
+      //TODO см Алгоритм обхода дерева в глубину ^_^
+   }
 }
 
 module.exports = Trains;

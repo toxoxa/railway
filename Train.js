@@ -1,7 +1,7 @@
 'use strict';
 
 var Train = class {
-   constructor(data){
+   constructor(data) {
       this.number = data.number;
       this.cost = data.cost;
       this.startPoint = data.startPoint;

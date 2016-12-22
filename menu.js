@@ -21,3 +21,9 @@ function options(rl) {
     })
   })
 }
+
+function getTrain(rl) {
+   //TODO Написать дописать считывание хар-к поезда(да, да, каждая с промисом) по аналогии с getSchedule
+}
+
+module.exports.options = options;
