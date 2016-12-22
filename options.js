@@ -16,7 +16,7 @@ function options(rl) {
       if (answer.match(/^[1-5]$/)) {
         resolve(+answer)
       } else {
-        reject('Неверно введен пункт меню')
+        reject('Выбрано неверное дествие')
       }
     })
   })

@@ -7,7 +7,6 @@ function read(fileName) {
       if (err) {
         reject(err);
       }
-      //console.log(JSON.parse(data));
       resolve(JSON.parse(data));
     });
   })

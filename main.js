@@ -1,5 +1,5 @@
 'use strict';
-const Train = require('./Train');
+const Trains = require('./Trains');
 const data = require('./stdio');
 const readline = require('readline');
 const rl = readline.createInterface({
@@ -7,10 +7,9 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const list = []
+var trains = new Trains();
 
 data.read('data.json')
-   .then(data => data.forEach(cfg => list.push(new Train(cfg))))
+   .then(data => data.forEach(cfg => trains.addTrain(cfg)))
    //.then(showMenu)
-   .then(console.log(list))
    .catch(console.log);

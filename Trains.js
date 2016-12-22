@@ -3,7 +3,7 @@
 var Train = require("./Train");
 
 var Trains = class {
-   counstructor() {
+   constructor() {
       this.trains = [];
    };
 
