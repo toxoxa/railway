@@ -15,7 +15,7 @@ var Train = class {
          number: this.number,
          cost: this.cost,
          startPoint: this.startPoint,
-         finishPoint: this.finishPoint.
+         finishPoint: this.finishPoint,
          startTime: this.startTime,
          finishTime : this.finishTime
       }

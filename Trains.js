@@ -2,14 +2,20 @@
 
 var Train = require("./Train");
 
-var Trains - class {
+var Trains = class {
    counstructor() {
       this.trains = [];
    };
 
    addTrain(data) {
-      this.trains.push(new Tour(data));
+      this.trains.push(new Train(data));
    };
+
+   setTrains(trains) {
+      for (var i = 0; i < trains.length; i++) {
+         this.addTrain(trains[i]);
+      }
+   }
 
    deleteTrain(trainNumber) {
       if(this.trains[trainNumber])
