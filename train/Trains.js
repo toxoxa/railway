@@ -33,4 +33,4 @@ var Trains - class {
    }
 }
 
-module.exports = Tours;
+module.exports = Trains;
