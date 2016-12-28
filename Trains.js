@@ -1,41 +1,44 @@
 'use strict';
 
-var Train = require("./Train");
+const SPLICE = 1;
 
-var Trains = class {
+let Train = require("./Train");
+
+let Trains = class {
    constructor() {
       this.trains = [];
-   };
+   }
 
    addTrain(data) {
       this.trains.push(new Train(data));
-   };
+   }
 
    setTrains(trains) {
-      for (var i = 0; i < trains.length; i++) {
+      for (let i = 0; i < trains.length; i++) {
          this.addTrain(trains[i]);
       }
    }
 
    deleteTrain(trainNumber) {
-      if(this.trains[trainNumber])
-         this.trains.splice(trainNumber, 1);
+      if(this.trains[trainNumber]) {
+         this.trains.splice(trainNumber, SPLICE);
+      }
    }
 
-   showdepartureTime(departurePoint, destinationTime) {
-      var result = [];
-      for(var i = 0; i < this.trains.length; i++)
-         if(this.trains[i].departurePoint === departurePoint && this.trains.destinationTime === destinationTime)
-            result.push(this.trains[i]);
-      return result;
+   showDepartureTime(departurePoint, destinationTime) {
+      for(let i = 0; i < this.trains.length; i++) {
+         if(this.trains[i].departurePoint === departurePoint && this.trains[i].destinationTime === destinationTime) {
+            console.log(this.trains[i]);
+         }
+      }
    }
 
-   showdeparturedestination(departurePoint, destinationPoint) {
-      var result = [];
-      for(var i = 0; i < this.trains.length; i++)
-         if(this.trains[i].departurePoint === departurePoint && this.trains.destinationPoint === destinationPoint)
-            result.push(this.trains[i]);
-      return result;
+   showDepartureDestination(departurePoint, destinationPoint) {
+      for(let i = 0; i < this.trains.length; i++) {
+         if(this.trains[i].departurePoint === departurePoint && this.trains[i].destinationPoint === destinationPoint) {
+            console.log(this.trains[i]);
+         }
+      }
    }
 
    showAllTrains() {

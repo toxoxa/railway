@@ -15,10 +15,10 @@ const GET_PATH = 3;
 const SHOW_START_COME = 4;
 const SHOW_START_FINISH = 5;
 
-var trains = new Trains();
+let trains = new Trains();
 
 data.read('data.json')
-   .then(data => data.forEach(cfg => trains.addTrain(cfg)))
+   .then(data => data.forEach(tr => trains.addTrain(tr)))
    .then(showOptions)
    .catch(console.log);
 
@@ -28,12 +28,18 @@ function showOptions() {
          switch(option) {
             case ADD_TRAIN:
                return menu.getTrain(rl)
-               .then(cfg => trains.addTrain(new Train(cfg)))
+               .then(tr => trains.addTrain(new Train(tr)))
                .catch(console.log);
             case DEL_TRAIN:
                trains.showAllTrains();
                return menu.getTrainNumber(rl, trains.trains.length)
                .then(idx => trains.deleteTrain(idx));
+            case SHOW_START_COME:
+               return menu.getPointAndTime(rl)
+               .then(params => trains.showDepartureTime(params['departurePoint'], params['destinationTime']));
+            case SHOW_START_FINISH:
+               return menu.getDepartureAndDestination(rl)
+               .then(params => trains.showDepartureDestination(params['departurePoint'], params['destinationPoint']));
          }
       })
       .catch(console.log)

@@ -1,13 +1,14 @@
 'use strict';
 
-var Train = class {
+let Train = class {
    constructor(data) {
+      console.log(data);
       this.number = data.number;
       this.cost = data.cost;
       this.departurePoint = data.departurePoint;
       this.destinationPoint = data.destinationPoint;
       this.departureTime = data.departureTime;
-      this.destinationTime = data.destinationPoint;
+      this.destinationTime = data.destinationTime;
    }
 
    getTrain() {

@@ -24,12 +24,12 @@ function options(rl) {
 
 function getTrain(rl) {
    function getNumber() {
-      let cfg = {};
+      let data = {};
       return new Promise((resolve, reject) => {
          rl.question('Введите номер поезда: ', (answer) => {
             if (answer.match(/\d+$/)) {
-               cfg.number = +answer;
-               resolve(cfg)
+               data.number = +answer;
+               resolve(data)
             } else {
                reject('Неверно введен номер поезда. Необходимо ввести число')
             }
@@ -40,13 +40,12 @@ function getTrain(rl) {
       })
    }
 
-   function getCost() {
-      let cfg = {};
+   function getCost(data) {
       return new Promise((resolve, reject) => {
          rl.question('Введите цену билета(руб.коп): ', (answer) => {
             if (answer.match(/\d+\.\d\d$/)) {
-               cfg.cost = answer;
-               resolve(cfg)
+               data.cost = answer;
+               resolve(data)
             } else {
                reject('Неверно введена цена билета. Необходимо ввести число')
             }
@@ -57,13 +56,12 @@ function getTrain(rl) {
       })
    }
 
-   function getDeparturePoint() {
-      let cfg = {};
+   function getDeparturePoint(data) {
       return new Promise((resolve, reject) => {
          rl.question('Введите пункт отправления: ', (answer) => {
             if (answer.match(/[a-zA-Zа-яА-Я]+$/)) {
-               cfg.departurePoint = answer;
-               resolve(cfg)
+               data.departurePoint = answer;
+               resolve(data)
             } else {
                reject('Неверно введен пункт отправления.')
             }
@@ -74,13 +72,12 @@ function getTrain(rl) {
       })
    }
 
-   function getDestinationPoint() {
-      let cfg = {};
+   function getDestinationPoint(data) {
       return new Promise((resolve, reject) => {
          rl.question('Введите пункт назначения: ', (answer) => {
             if (answer.match(/[a-zA-Zа-яА-Я]+$/)) {
-               cfg.destinationPoint = answer;
-               resolve(cfg)
+               data.destinationPoint = answer;
+               resolve(data)
             } else {
                reject('Неверно введен пункт назначения.')
             }
@@ -91,13 +88,12 @@ function getTrain(rl) {
       })
    }
 
-   function getDepartureTime() {
-      let cfg = {};
+   function getDepartureTime(data) {
       return new Promise((resolve, reject) => {
          rl.question('Введите время отправения: ', (answer) => {
             if (answer.match(/\d\d:\d\d$/)) {
-               cfg.departureTime = answer;
-               resolve(cfg)
+               data.departureTime = answer;
+               resolve(data)
             } else {
                reject('Неверно введено время отправления.')
             }
@@ -108,13 +104,12 @@ function getTrain(rl) {
       })
    }
 
-   function getDestinationTime() {
-      let cfg = {};
+   function getDestinationTime(data) {
       return new Promise((resolve, reject) => {
          rl.question('Введите время прибытия: ', (answer) => {
             if (answer.match(/\d\d:\d\d$/)) {
-               cfg.destinationTime = answer;
-               resolve(cfg)
+               data.destinationTime = answer;
+               resolve(data)
             } else {
                reject('Неверно введено время прибытия.')
             }
@@ -142,6 +137,82 @@ function getTrainNumber(rl, max) {
   })
 }
 
+function getPointAndTime(rl) {
+   function getDeparturePoint() {
+      let data = {};
+      return new Promise((resolve, reject) => {
+         rl.question('Введите пункт отправления: ', (answer) => {
+            if (answer.match(/[a-zA-Zа-яА-Я]+$/)) {
+               data.departurePoint = answer;
+               resolve(data)
+            } else {
+               reject('Неверно введен пункт отправления.')
+            }
+         })
+      }).catch((err) => {
+         console.log(err);
+         return getDeparturePoint();
+      })
+   }
+
+   function getDestinationTime(data) {
+      return new Promise((resolve, reject) => {
+         rl.question('Введите время прибытия: ', (answer) => {
+            if (answer.match(/\d\d:\d\d$/)) {
+               data.destinationTime = answer;
+               resolve(data)
+            } else {
+               reject('Неверно введено время прибытия.')
+            }
+         })
+      }).catch((err) => {
+         console.log(err);
+         return getDestinationTime();
+      })
+   }
+
+   return getDeparturePoint().then(getDestinationTime);
+}
+
+function getDepartureAndDestination(rl) {
+   function getDeparturePoint() {
+      let data = {};
+      return new Promise((resolve, reject) => {
+         rl.question('Введите пункт отправления: ', (answer) => {
+            if (answer.match(/[a-zA-Zа-яА-Я]+$/)) {
+               data.departurePoint = answer;
+               resolve(data)
+            } else {
+               reject('Неверно введен пункт отправления.')
+            }
+         })
+      }).catch((err) => {
+         console.log(err);
+         return getDeparturePoint();
+      })
+   }
+
+   function getDestinationPoint(data) {
+      return new Promise((resolve, reject) => {
+         rl.question('Введите пункт назначения: ', (answer) => {
+            if (answer.match(/[a-zA-Zа-яА-Я]+$/)) {
+               data.destinationPoint = answer;
+               resolve(data)
+            } else {
+               reject('Неверно введен пункт назначения.')
+            }
+         })
+      }).catch((err) => {
+         console.log(err);
+         return getDestinationPoint();
+      })
+   }
+
+   return getDeparturePoint().then(getDestinationPoint);
+}
+
 module.exports.options = options;
 module.exports.getTrain = getTrain;
 module.exports.getTrainNumber = getTrainNumber;
+module.exports.getPointAndTime = getPointAndTime;
+module.exports.getDepartureAndDestination = getDepartureAndDestination;
