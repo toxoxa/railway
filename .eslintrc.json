@@ -1,0 +1,23 @@
+{
+     "parserOptions": {
+         "ecmaVersion": 6,
+         "sourceType": "script"
+     },
+     "env": {
+         "node": true
+     },
+     "extends": "eslint:recommended",
+     "rules": {
+         "no-console": "off",
+         "complexity": ["error", 15],
+         "curly": "error",
+         "no-implied-eval": "error",
+         "no-invalid-this": "error",
+         "no-magic-numbers": "error",
+         "no-new-func": "error",
+         "no-proto": "error",
+         "no-useless-call": "error",
+         "strict": "error",
+         "arrow-spacing": "error"
+     }
+}

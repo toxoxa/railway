@@ -1,4 +1,5 @@
 'use strict';
+const Train = require('./Train');
 const Trains = require('./Trains');
 const data = require('./stdio');
 const menu = require('./menu');
@@ -23,8 +24,18 @@ data.read('data.json')
 
 function showOptions() {
    menu.options(rl)
-      .then((option) =>
+      .then((option) => {
          switch(option) {
-            //TODO добавить кейсы
+            case ADD_TRAIN:
+               return menu.getTrain(rl)
+               .then(cfg => trains.addTrain(new Train(cfg)))
+               .catch(console.log);
+            case DEL_TRAIN:
+               trains.showAllTrains();
+               return menu.getTrainNumber(rl, trains.trains.length)
+               .then(idx => trains.deleteTrain(idx));
          }
+      })
+      .catch(console.log)
+      .then(showOptions)
 }

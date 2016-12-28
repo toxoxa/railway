@@ -22,23 +22,30 @@ var Trains = class {
          this.trains.splice(trainNumber, 1);
    }
 
-   showStartTime(startPoint, finishTime) {
+   showdepartureTime(departurePoint, destinationTime) {
       var result = [];
       for(var i = 0; i < this.trains.length; i++)
-         if(this.trains[i].startPoint === startPoint && this.trains.finishTime === finishTime)
+         if(this.trains[i].departurePoint === departurePoint && this.trains.destinationTime === destinationTime)
             result.push(this.trains[i]);
       return result;
    }
 
-   showStartFinish(startPoint, finishPoint) {
+   showdeparturedestination(departurePoint, destinationPoint) {
       var result = [];
       for(var i = 0; i < this.trains.length; i++)
-         if(this.trains[i].startPoint === startPoint && this.trains.finishPoint === finishPoint)
+         if(this.trains[i].departurePoint === departurePoint && this.trains.destinationPoint === destinationPoint)
             result.push(this.trains[i]);
       return result;
    }
 
-   makeRoute(startPoint, finishPoint) {
+   showAllTrains() {
+      for(let i = 0; i < this.trains.length; i++) {
+         console.log('Поезд ' + i + ':');
+         console.log(this.trains[i]);
+      }
+   }
+
+   makeRoute(departurePoint, destinationPoint) {
       //TODO см Алгоритм обхода дерева в глубину ^_^
    }
 }
