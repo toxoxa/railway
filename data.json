@@ -1,1 +1,3 @@
-[{"number":"21","cost":300,"departurePoint":"Cologne","destinationPoint":"Amsterdam","departureTime":"14:00","destinationTime":"21:30"}]
+[{"number":"21","cost":300,"departurePoint":"Cologne","destinationPoint":"Amsterdam","departureTime":"21:40","destinationTime":"23:30"},
+{"number":"34","cost":100,"departurePoint":"Yaroslavl","destinationPoint":"Moscow","departureTime":"11:30","destinationTime":"13:30"},
+{"number":"21","cost":400,"departurePoint":"Moscow","destinationPoint":"Cologne","departureTime":"14:00","destinationTime":"21:30"}]

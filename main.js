@@ -34,6 +34,11 @@ function showOptions() {
                trains.showAllTrains();
                return menu.getTrainNumber(rl, trains.trains.length)
                .then(idx => trains.deleteTrain(idx));
+            case GET_PATH:
+               return menu.getDepartureAndDestination(rl)
+               .then(params => trains.CountStartFinish(params['departurePoint'], params['destinationPoint']))
+               .then(params => trains.makeRoute(params[ADD_TRAIN], params[DEL_TRAIN], params[GET_PATH], params[SHOW_START_FINISH]))
+               .catch(console.log)
             case SHOW_START_COME:
                return menu.getPointAndTime(rl)
                .then(params => trains.showDepartureTime(params['departurePoint'], params['destinationTime']));

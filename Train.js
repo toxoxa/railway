@@ -2,7 +2,6 @@
 
 let Train = class {
    constructor(data) {
-      console.log(data);
       this.number = data.number;
       this.cost = data.cost;
       this.departurePoint = data.departurePoint;

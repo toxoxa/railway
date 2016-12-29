@@ -1,5 +1,6 @@
 'use strict';
 
+const NILL = 0;
 const SPLICE = 1;
 
 let Train = require("./Train");
@@ -48,8 +49,33 @@ let Trains = class {
       }
    }
 
-   makeRoute(departurePoint, destinationPoint) {
-      //TODO см Алгоритм обхода дерева в глубину ^_^
+   makeRoute(startPoints, finishPoints) {
+      if(startPoints.length === NILL || finishPoints.length === NILL) {
+         console.log('Не удалось разработать маршрут');
+         return false;
+      }
+   }
+
+   CountStartFinish(departurePoint, destinationPoint) {
+      return new Promise((resolve, reject) => {
+         let startPoints = [],
+         finishPoints = [];
+         if (departurePoint === destinationPoint) {
+            reject('Вам не нужен поезд, чтобы добраться в этот пункт');
+            return;
+         }
+         for(let i = 0; i < this.trains.length; i++) {
+            if(this.trains[i].departurePoint === departurePoint) {
+               startPoints.push(i);
+            }
+         }
+         for(let i = 0; i < this.trains.length; i++) {
+            if(this.trains[i].departurePoint === departurePoint) {
+               startPoints.push(i);
+            }
+         }
+         resolve([startPoints, finishPoints, departurePoint, destinationPoint]);
+      })
    }
 }
 
